@@ -1,6 +1,8 @@
 const path = require('path')
 const express = require('express')
 const app = express();
+app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/public'));
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -22,12 +24,11 @@ app.get('/', function(req, res) {
         tagline: tagline
     });
 });
-
-
 // about page 
 app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
-app.listen(3000);
-console.log('3000 is the magic port');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
