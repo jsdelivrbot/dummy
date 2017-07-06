@@ -1,32 +1,39 @@
-const path = require('path')
-const express = require('express')
+const path = require('path');
+const express = require('express');
 const app = express();
-app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
+const bodyParser = require("body-parser");
 
-// set the view engine to ejs
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
+app.set('port', (process.env.PORT || 5000));
 
-// use res.render to load up an ejs view file
-
-// index page 
+// form input page
 app.get('/', function(req, res) {
-    var drinks = [
-        { name: 'Bloody Mary', drunkness: 3 },
-        { name: 'Martini', drunkness: 5 },
-        { name: 'Scotch', drunkness: 10 }
-    ];
-    var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
-
-    res.render('pages/index', {
-        drinks: drinks,
-        tagline: tagline
-    });
+    res.render('pages/index');
 });
-// about page 
-app.get('/about', function(req, res) {
-    res.render('pages/about');
+
+var formInput={};
+
+app.post('/', function(request, response){
+    formInput = {
+        firstName: request.body.firstName, 
+        lastName: request.body.lastName, 
+        userName: request.body.userName,
+        email: request.body.email,
+        dob: request.body.dob,
+        gender: request.body.gender,
+        employeeCode: request.body.employeeCode
+    };
+    response.render('pages/formData', { formInput: formInput });
+});
+
+// form data page
+app.get('/formData', function(req, res) {
+    res.render('pages/formData', { formInput: formInput });
 });
 
 app.listen(app.get('port'), function() {

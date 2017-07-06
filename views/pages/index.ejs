@@ -13,16 +13,19 @@
 
     <main>
         <div class="jumbotron">
-            <h2>Variable</h2>
-            <p><%= tagline %></p>
-            <h1>This is great</h1>
-            <p>Welcome to templating using EJS</p>
-            <h2>Loop</h2>
-            <ul>
-                <% drinks.forEach(function(drink) { %>
-                    <li><%= drink.name %> - <%= drink.drunkness %></li>
-                <% }); %>
-            </ul>
+            <h2>Employee Form</h2>
+            <p>
+                <form method="POST" action="/">
+                First Name :    <input type="text" name="firstName"><br>
+                Last Name :     <input type="text" name="lastName"><br>
+                User Name :     <input type="text" name="userName"><br>
+                Email :         <input type="email" name="email"><br>
+                Date Of Birth : <input type="date" name="dob"><br>
+                Gender :<br>    <input type="radio" name="gender" value="male"> Male<br>
+                                <input type="radio" name="gender" value="female"> Female<br>
+                Employee Code : <input type="text" name="employeeCode"><br>
+                <input type="submit" value="Submit">
+            </p>
         </div>
     </main>
 

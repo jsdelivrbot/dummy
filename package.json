@@ -4,11 +4,11 @@
   "description": "training",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/techmmr/training/dummy"
   },
   "author": "Manav Mishra",
   "license": "ISC",
