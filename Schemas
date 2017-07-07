@@ -1,0 +1,36 @@
+userSchema {
+    name        : String,
+    address		: String,
+    username    : { type: String, required: true, unique: true, default: this.name},
+    password    : { type: String, required: true, default: "password"},
+    admin       : { type: Boolean, default: false},
+    cartId      : String,
+    dateCreated : Date
+}
+
+// State is going to hold one of 4 states "empty", "loaded", "paid", "delivered"
+cartSchema {
+	cartId      : { type: String, unique: true }
+	items       : {
+	    itemId  : String,
+	    quantity: Number,
+	}
+	totalCost	: Number,
+	State       : String
+}
+
+itemSchema{
+	itemId		: String,
+	name		: String,
+    cost    	: Number,
+    Vendor  	: String
+}
+
+storeSchema {
+	itemId		: String,
+	quantity	: Number,
+	loadedCarts	: {
+		number 	: Number,
+		cartIDs	: [String]
+	}
+}
