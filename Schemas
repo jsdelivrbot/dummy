@@ -19,7 +19,7 @@ cartSchema {
 	State       : String
 }
 
-itemSchema{
+itemSchema {
 	itemId		: String,
 	name		: String,
 	cost 		: Number,
