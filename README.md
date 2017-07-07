@@ -1,2 +1,2 @@
 # training
-training stuffs
+Heroku Deployed App
