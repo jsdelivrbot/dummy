@@ -11,10 +11,10 @@ userSchema {
 // State is going to hold one of 4 states "empty", "loaded", "paid", "delivered"
 cartSchema {
 	cartId      : { type: String, unique: true }
-	items       : {
+	items       : [{
 	    itemId  : String,
-	    quantity: Number,
-	}
+	    quantity: Number
+	}]
 	totalCost	: Number,
 	State       : String
 }
@@ -22,15 +22,13 @@ cartSchema {
 itemSchema{
 	itemId		: String,
 	name		: String,
-    cost    	: Number,
-    Vendor  	: String
+	cost 		: Number,
+	Vendor 		: String
 }
 
 storeSchema {
-	itemId		: String,
-	quantity	: Number,
-	loadedCarts	: {
-		number 	: Number,
-		cartIDs	: [String]
-	}
+	items       : [{
+	    itemId  : String,
+	    quantity: Number
+	}]
 }
