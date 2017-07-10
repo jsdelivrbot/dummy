@@ -1,4 +1,3 @@
-echracerp@ss
 userSchema {
 	userId		: String
 	name		: String,
